@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Temperature Converter</title>
+</head>
+<body>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-4 text-center mb-4 app-title">What's The Temp? </h1>
+
+        <div class="input-group input-group-lg">
+          <label class="sr-only" for="farInput">Enter degrees in Farenheit</label>
+          <input id="farInput" type="number" class="form-control" placeholder="Enter number">
+          <div class="input-group-addon starter">&deg;F</div>
+          <div class="input-group-addon result-a"><span id="farToCel"></span> &deg;C</div>
+          <div class="input-group-addon result-b"><span id="farToKel"></span> &deg;K</div>
+        </div>
+
+        <div class="input-group input-group-lg">
+          <label class="sr-only" for="celInput">Enter degrees in Celsius</label>
+          <input id="celInput" type="number" class="form-control" placeholder="Enter number">
+          <div class="input-group-addon starter">&deg;C</div>
+          <div class="input-group-addon result-a"><span id="celToFar"></span> &deg;F</div>
+          <div class="input-group-addon result-b"><span id="celToKel"></span> &deg;K</div>
+        </div>
+
+        <div class="input-group input-group-lg">
+          <label class="sr-only" for="kelInput">Enter degrees in Kelvin</label>
+          <input id="kelInput" type="number" class="form-control" placeholder="Enter number">
+          <div class="input-group-addon starter">&deg;K</div>
+          <div class="input-group-addon result-a"><span id="kelToFar"></span> &deg;F</div>
+          <div class="input-group-addon result-b"><span id="kelToCel"></span> &deg;C</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row footer">
+      <p class="footer-text" style="text-align:center">Made by <u><a href="https://greed2202.github.io/sidd.github.io/">Siddhant Misra</u></a></p>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+  function tempLoad () {
+let temp = document.getElementById('temp');
+temp.innerHTML = "&#xf2cb;";
+
+setTimeout(function(){
+  temp.innerHTML = "&#xf2ca;";
+}, 1000);
+setTimeout(function(){
+  temp.innerHTML = "&#xf2c9;";
+}, 2000);
+setTimeout(function(){
+  temp.innerHTML = "&#xf2c8;";
+}, 3000);
+setTimeout(function(){
+  temp.innerHTML = "&#xf2c7;";
+}, 4000);
+
+}
+
+tempLoad();
+
+setInterval(tempLoad, 5000);
+
+
+// Convert Farenheit to...
+document.getElementById('farInput').addEventListener('input', function(e) {
+
+// Use Farenheit to convert
+let far = e.target.value;
+
+// Convert to Celsius
+document.getElementById('farToCel').innerHTML = ((5/9)*((far*1)-32)).toFixed(2);
+
+// Convert to Kelvin
+document.getElementById('farToKel').innerHTML = ((5/9)*((far*1)+459.67)).toFixed(2);
+
+});
+
+// Convert Celsius to...
+document.getElementById('celInput').addEventListener('input', function(e) {
+
+// Use Celsius to convert
+let cel = e.target.value;
+
+// Convert to Farenheit
+document.getElementById('celToFar').innerHTML = ( (cel*1.8) + 32).toFixed(2);
+
+// Convert to Kelvin
+document.getElementById('celToKel').innerHTML = ( (cel*1) + 273.15).toFixed(2);
+
+});
+
+// Convert Kelvin to...
+document.getElementById('kelInput').addEventListener('input', function(e) {
+
+// Use Kelvin to convert
+let kel = e.target.value;
+
+// Convert to Farenheit
+document.getElementById('kelToFar').innerHTML = ( 1.8*((kel*1)-273) + 32).toFixed(2);
+
+// Convert to Celsius
+document.getElementById('kelToCel').innerHTML = ((kel*1)-273.15).toFixed(2);
+
+});
+  </script>
+</body>
+</html>
